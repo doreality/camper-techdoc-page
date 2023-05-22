@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTTP Documentation</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!-- navigation bar -->
+    <nav id="navbar">
+      <header>
+        <h1>HTTP Documentation</h1>
+      </header>
+      <ul>
+        <li><a href="#Introduction" class="nav-link">Introduction</a></li>
+        <li><a href="#Request_Methods" class="nav-link">Request Methods</a></li>
+        <li><a href="#Request_Headers" class="nav-link">Request Headers</a></li>
+        <li>
+          <a href="#Request_Parameters" class="nav-link">Request Parameters</a>
+        </li>
+        <li>
+          <a href="#Request_Status_Codes" class="nav-link"
+            >Request Status Codes</a
+          >
+        </li>
+        <li>
+          <a href="#Response_Headers" class="nav-link">Response Headers</a>
+        </li>
+        <li><a href="#Response_Body" class="nav-link">Response Body</a></li>
+        <li><a href="#Error_Handling" class="nav-link">Error Handling</a></li>
+        <li>
+          <a href="#Authentication_and_Authorization" class="nav-link"
+            >Authentication and Authorization</a
+          >
+        </li>
+        <li><a href="#Examples" class="nav-link">Examples</a></li>
+        <li><a href="#Reference" class="nav-link">Reference</a></li>
+      </ul>
+    </nav>
+    <!-- main content (technical documentation) -->
+    <main id="main-doc">
+      <!-- at least 5 sections: 11 -->
+      <!-- Introduction -->
+      <section class="main-section" id="Introduction">
+        <header>
+          <h2>Introduction</h2>
+        </header>
+        <p>
+          <span class="bold">HTTP</span> (Hypertext Transfer Protocol) is an
+          application-layer protocol used for transmitting hypermedia documents,
+          such as HTML. It is the foundation of data communication on the World
+          Wide Web and facilitates the exchange of information between web
+          servers and clients. HTTP is a stateless protocol, which means that
+          each request is independent and has no knowledge of previous requests.
+        </p>
+      </section>
+      <!-- Request Methods -->
+      <section class="main-section" id="Request_Methods">
+        <header>
+          <h2>Request Methods</h2>
+        </header>
+        <p>
+          HTTP defines several request methods, also known as verbs, to indicate
+          the desired action to be performed on the resource. The most commonly
+          used methods are:
+        </p>
+        <ul>
+          <li>
+            <span class="bold">GET</span>: Retrieve a resource or a
+            representation of it.
+          </li>
+          <li>
+            <span class="bold">POST</span>: Submit an entity to be processed by
+            the resource identified by the URI. Typically used to create new
+            resources, or to update existing ones with partial data.
+          </li>
+          <li>
+            <span class="bold">PUT</span>: Replace the entity of the resource
+            identified by the URI with the supplied entity.
+          </li>
+          <li>
+            <span class="bold">DELETE</span>: Delete the resource identified by
+            the URI.
+          </li>
+          <li>
+            <span class="bold">HEAD</span>: Retrieve the headers of the
+            resource, without the body.
+          </li>
+          <li>
+            <span class="bold">OPTIONS</span>: Retrieve the allowed methods and
+            other capabilities of the server for the resource identified by the
+            URI.
+          </li>
+          <li>
+            <span class="bold">PATCH</span>: Apply a partial update to the
+            entity of the resource identified by the URI.
+          </li>
+        </ul>
+        <p>
+          HTTP also supports several other less commonly used methods, such as
+          <span class="bold">CONNECT</span>, <span class="bold">TRACE</span>,
+          and <span class="bold">LINK</span>.
+        </p>
+      </section>
+      <!-- Request Headers -->
+      <section class="main-section" id="Request_Headers">
+        <header>
+          <h2>Request Headers</h2>
+        </header>
+        <p>
+          HTTP request headers provide additional information about the request
+          being made. Some commonly used headers include:
+        </p>
+        <ul>
+          <li>
+            <span class="bold">Accept</span>: Indicates the media type(s)
+            accepted by the client. This can be used to request a specific
+            representation of a resource, such as JSON or XML.
+          </li>
+          <li>
+            <span class="bold">Content-Type</span>: Indicates the media type of
+            the request entity (payload) being sent to the server. For example,
+            <code class="inline-code">application/json</code> or
+            <code class="inline-code">application/x-www-form-urlencoded</code>.
+          </li>
+          <li>
+            <span class="bold">Authorization</span>: Provides authentication
+            credentials for the request. This can be used to authenticate the
+            client making the request, or to provide access tokens for
+            authorized API requests.
+          </li>
+          <li>
+            <span class="bold">User-Agent</span>: Identifies the client software
+            making the request. This can be used by servers to tailor their
+            responses to specific clients (such as mobile devices), or to track
+            usage statistics.
+          </li>
+        </ul>
+        <p>
+          There are many other headers that can be used in HTTP requests, such
+          as <code class="inline-code">Cache-Control</code>,
+          <code class="inline-code">If-Modified-Since</code>, and
+          <code class="inline-code">Referer</code>. It is important to choose
+          the appropriate headers for your use case, and to ensure that they are
+          used consistently throughout your API.
+        </p>
+      </section>
+      <!-- Request Parameters -->
+      <section class="main-section" id="Request_Parameters">
+        <header>
+          <h2>Request Parameters</h2>
+        </header>
+        <p>
+          HTTP requests can include parameters, which provide additional
+          information about the request. These parameters can be included in the
+          URL, as query parameters, or in the request body, as form data or a
+          JSON payload.
+        </p>
+        <section class="child-section">
+          <h3>Query Parameters</h3>
+          <p>
+            Query parameters are included in the URL, after a question mark
+            (<code class="inline-code">?</code>). They are used to filter or
+            paginate a request, or to provide additional information about the
+            requested resource. For example, a query parameter might be used to
+            specify the number of results to return, or to search for resources
+            matching a specific criteria.
+          </p>
+          <p>Here is an example of a URL with query parameters:</p>
+          <pre>
+            https://api.example.com/products?category=books&limit=10&page=2
+          </pre>
+          <p>
+            In this example, the <code class="inline-code">category</code>,
+            <code class="inline-code">limit</code>, and
+            <code class="inline-code">page</code> parameters are included in the
+            URL. The server can use these parameters to return a specific subset
+            of the available resources.
+          </p>
+        </section>
+        <section class="child-section">
+          <h3>Request Body Parameters</h3>
+          <p>
+            Request body parameters are included in the request body, and can be
+            sent as form data or a JSON payload. They are used to include more
+            complex data in a request, such as a new resource to be created.
+          </p>
+          <p>
+            Here is an example of a JSON payload with request body parameters:
+          </p>
+          <pre>
+            {
+            &nbsp;&nbsp;"name": "New Product",
+            &nbsp;&nbsp;"description": "A new product to be added to the catalog",
+            &nbsp;&nbsp;"price": 19.99,
+            &nbsp;&nbsp;"category": "books"
+            }
+          </pre>
+          <p>
+            In this example, the JSON payload includes the
+            <code class="inline-code">name</code>,
+            <code class="inline-code">description</code>,
+            <code class="inline-code">price</code>, and
+            <code class="inline-code">category</code> parameters. The server can
+            use these parameters to create a new resource in the database.
+          </p>
+        </section>
+        <p>
+          It is important to document the parameters supported by your API,
+          including their names, types, and allowed values. You should also
+          provide examples of how to include the parameters in your requests,
+          and how the server will interpret them.
+        </p>
+      </section>
+      <!-- Request Status Codes -->
+      <section class="main-section" id="Request_Status_Codes">
+        <header>
+          <h2>Request Status Codes</h2>
+        </header>
+        <p>
+          HTTP response status codes indicate the outcome of a request to the
+          server. They are three-digit numbers that are grouped into five
+          classes, according to their first digit:
+        </p>
+        <ul>
+          <li>
+            <span class="bold">1xx (Informational)</span>: The request has been
+            received and the server is continuing to process it.
+          </li>
+          <li>
+            <span class="bold">2xx (Success)</span>: The request has been
+            successfully received, understood, and accepted.
+          </li>
+          <li>
+            <span class="bold">3xx (Redirection)</span>: Further action needs to
+            be taken in order to complete the request.
+          </li>
+          <li>
+            <span class="bold">4xx (Client Error)</span>: The request contains
+            bad syntax or cannot be fulfilled by the server.
+          </li>
+          <li>
+            <span class="bold">5xx (Server Error)</span>: The server failed to
+            fulfill an apparently valid request.
+          </li>
+        </ul>
+        <p>Some commonly encountered HTTP response status codes include:</p>
+        <ul>
+          <li>
+            <span class="bold">200 (OK)</span>: The request has succeeded. The
+            meaning of the response body depends on the HTTP method used in the
+            request.
+          </li>
+          <li>
+            <span class="bold">201 (Created)</span>: The request has been
+            fulfilled and a new resource has been created.
+          </li>
+          <li>
+            <span class="bold">204 (No Content)</span>: The request has
+            succeeded and there is no response body.
+          </li>
+          <li>
+            <span class="bold">301 (Moved Permanently)</span>: The requested
+            resource has been moved permanently to a new URL.
+          </li>
+          <li>
+            <span class="bold">302 (Found)</span>: The requested resource has
+            been temporarily moved to a new URL.
+          </li>
+          <li>
+            <span class="bold">400 (Bad Request)</span>: The request contains
+            bad syntax or cannot be fulfilled by the server.
+          </li>
+          <li>
+            <span class="bold">401 (Unauthorized)</span>: The request requires
+            authentication, and the client has not provided valid credentials.
+          </li>
+          <li>
+            <span class="bold">403 (Forbidden)</span>: The server refuses to
+            fulfill the request, usually because the client does not have
+            sufficient permissions.
+          </li>
+          <li>
+            <span class="bold">404 (Not Found)</span>: The requested resource
+            does not exist on the server.
+          </li>
+          <li>
+            <span class="bold">500 (Internal Server Error)</span>: The server
+            encountered an unexpected condition that prevented it from
+            fulfilling the request.
+          </li>
+        </ul>
+        <p>
+          It is important to understand the meaning of the different response
+          status codes, and to handle them appropriately in your client code.
+        </p>
+      </section>
+      <!-- Response Headers -->
+      <section class="main-section" id="Response_Headers">
+        <header>
+          <h2>Response Headers</h2>
+        </header>
+        <p>
+          HTTP response headers provide additional information about the
+          response being returned. Some commonly used headers include:
+        </p>
+        <ul>
+          <li>
+            <span class="bold">Content-Type</span>: Indicates the media type of
+            the response body. For example,
+            <code class="inline-code">text/html</code> or
+            <code class="inline-code">application/json</code>.
+          </li>
+          <li>
+            <span class="bold">Cache-Control</span>: Defines how long the
+            response can be cached, and under what conditions.
+          </li>
+          <li>
+            <span class="bold">ETag</span>: A unique identifier for the
+            response, which can be used to determine if the response has changed
+            since the last request.
+          </li>
+          <li>
+            <span class="bold">Location</span>: The URL of a newly created
+            resource, or the URL of a resource that has been moved permanently.
+          </li>
+          <li>
+            <span class="bold">Content-Length</span> The size of the response
+            body, in bytes.
+          </li>
+          <li>
+            <span class="bold">Access-Control-Allow-Origin</span>: Indicates
+            which domains are allowed to make cross-origin requests to the
+            server.
+          </li>
+        </ul>
+        <p>
+          There are many other headers that can be used in HTTP responses, such
+          as <code class="inline-code">Last-Modified</code>,
+          <code class="inline-code">Content-Encoding</code>, and
+          <code class="inline-code">Set-Cookie</code>. It is important to choose
+          the appropriate headers for your use case, and to ensure that they are
+          used consistently throughout your API.
+        </p>
+      </section>
+      <!-- Response Body -->
+      <section class="main-section" id="Response_Body">
+        <header>
+          <h2>Response Body</h2>
+        </header>
+        <p>
+          The format of the response body depends on the media type specified in
+          the <code class="inline-code">Content-Type</code> header of the
+          response. Some common media types include:
+        </p>
+        <ul>
+          <li>
+            <span class="bold">text/html</span>: The response body is HTML,
+            which can be rendered by a web browser.
+          </li>
+          <li>
+            <span class="bold">application/json</span> The response body is
+            JSON, which is a lightweight data interchange format. JSON can be
+            easily parsed by most programming languages, and is commonly used in
+            APIs.
+          </li>
+          <li>
+            <span class="bold">application/xml</span>: The response body is XML,
+            which is a markup language used to encode documents in a
+            human-readable and machine-readable format.
+          </li>
+          <li>
+            <span class="bold">text/plain</span>: The response body is plain
+            text, which can be used for simple text-based responses.
+          </li>
+        </ul>
+        <p>
+          When parsing the response body, it is important to check the
+          <code class="inline-code">Content-Type</code> header to ensure that
+          the correct parser is used. For example, if the
+          <code class="inline-code">Content-Type</code> header is
+          <code class="inline-code">application/json</code>, then the response
+          body should be parsed as JSON.
+        </p>
+        <p>
+          The response body may include additional information about the
+          resource being requested, such as metadata or links to related
+          resources. It is important to document the format of the response
+          body, and to provide examples of how it can be interpreted in client
+          code.
+        </p>
+      </section>
+      <!-- Error Handling -->
+      <section class="main-section" id="Error_Handling">
+        <header>
+          <h2>Error Handling</h2>
+        </header>
+        <p>
+          When making HTTP requests, it is important to handle errors and status
+          codes returned by the server properly. This ensures that your
+          application can gracefully handle any issues that may arise during
+          communication with the server. Here are some key points to consider
+          when it comes to error handling:
+        </p>
+        <ol>
+          <li>
+            <span class="bold">HTTP Status Codes</span>: HTTP status codes are
+            three-digit numbers that indicate the outcome of an HTTP request.
+            They provide information about whether the request was successful or
+            encountered an error. Familiarize yourself with common status codes
+            such as 200 (OK), 400 (Bad Request), 404 (Not Found), and 500
+            (Internal Server Error).
+          </li>
+          <li>
+            <span class="bold">Error Response Formats</span>: Servers often send
+            error responses in a specific format, such as JSON or XML, to
+            provide additional details about the encountered error. When
+            handling errors, it's crucial to parse and extract relevant
+            information from these error response formats.
+          </li>
+          <li>
+            <span class="bold">Handling Different Error Scenarios</span>:
+            Different types of errors may occur during an HTTP request,
+            including client-side errors (e.g., invalid input, authentication
+            failures) and server-side errors (e.g., database connection issues,
+            server timeouts). Your error handling logic should be able to
+            differentiate between these scenarios and take appropriate actions.
+          </li>
+          <li>
+            <span class="bold">Error Reporting and Logging</span>: Implement a
+            mechanism to report and log errors encountered during HTTP requests.
+            This can help in troubleshooting and identifying patterns or
+            recurring issues. Logging the details of the error, such as the
+            error message, status code, and relevant request information, can
+            assist in investigating and resolving problems.
+          </li>
+          <li>
+            <span class="bold">Retrying and Resending Requests</span>: In some
+            cases, errors may occur due to temporary network issues or server
+            unavailability. Consider implementing mechanisms for retrying or
+            resending failed requests, with appropriate backoff and retry
+            strategies.
+          </li>
+          <li>
+            <span class="bold">User-Friendly Error Messages</span>: When
+            presenting errors to users, strive to provide clear and meaningful
+            error messages that help them understand the problem and suggest
+            possible solutions. Avoid displaying raw error responses directly to
+            users, as they may contain sensitive information or technical
+            details.
+          </li>
+          <li>
+            <span class="bold">Troubleshooting</span>: Include troubleshooting
+            guidance in your documentation. Provide information on common error
+            scenarios, steps to diagnose and resolve issues, and recommended
+            practices for handling errors effectively.
+          </li>
+        </ol>
+        <p>
+          By following these guidelines and providing comprehensive error
+          handling in your application, you can improve its robustness, user
+          experience, and overall reliability when interacting with the server.
+        </p>
+      </section>
+      <!-- Authentication and Authorization -->
+      <section class="main-section" id="Authentication_and_Authorization">
+        <header>
+          <h2>Authentication and Authorization</h2>
+        </header>
+        <p>
+          Authentication and Authorization are important aspects of secure
+          communication between clients and servers in web applications. They
+          ensure that only authorized users can access protected resources and
+          perform specific actions.
+        </p>
+        <section class="child-section">
+          <h3>Authentication</h3>
+          <ul>
+            <li>
+              <span class="bold">Basic Authentication</span>: This method
+              involves sending the username and password in the request headers
+              using Base64 encoding. The server validates the credentials before
+              granting access.
+            </li>
+            <li>
+              <span class="bold">API Keys</span>: API keys are unique
+              identifiers assigned to individual users or applications. They are
+              included in the request headers or query parameters to
+              authenticate the request.
+            </li>
+            <li>
+              <span class="bold">OAuth</span>: OAuth is an open standard for
+              authentication and authorization. It allows users to grant limited
+              access to their resources on one website to another website
+              without sharing their credentials. OAuth involves multiple
+              parties, including the client application, the resource owner
+              (user), and the authorization server.
+            </li>
+          </ul>
+        </section>
+        <section class="child-section">
+          <h3>Including Authentication in Requests</h3>
+          <ul>
+            <li>
+              <span class="bold">Basic Authentication</span>: Include the
+              <code class="inline-code">Authorization</code> header in the
+              request with the value
+              <code class="inline-code"
+                >Basic &lt;base64-encoded-credentials&gt;</code
+              >, where
+              <code class="inline-code">
+                &lt;base64-encoded-credentials&gt;
+              </code>
+              is the Base64-encoded string of
+              <code class="inline-code">username:password</code>.
+            </li>
+            <li>
+              <span class="bold">API Keys</span>: Include the API key in the
+              request headers or query parameters. For example,
+              <code class="inline-code">X-API-Key: &lt;api-key&gt;</code> in the
+              headers or
+              <code class="inline-code">?api_key=&lt;api-key&gt;</code> in the
+              URL query parameters.
+            </li>
+            <li>
+              <span class="bold">OAuth</span>: Follow the OAuth flow, which
+              involves redirecting the user to the authorization server,
+              obtaining an access token, and including the access token in the
+              request headers using the
+              <code class="inline-code">Authorization</code> header with the
+              value
+              <code class="inline-code">Bearer &lt;access-token&gt;</code>.
+            </li>
+          </ul>
+        </section>
+        <p>
+          It's important to note that the specific implementation of
+          authentication and authorization may vary depending on the server-side
+          technologies and frameworks used in your application. Always refer to
+          the documentation or guidelines provided by the service or platform
+          you are working with for accurate and up-to-date instructions.
+        </p>
+        <p>
+          Remember, proper authentication and authorization mechanisms are
+          crucial to protect sensitive data and ensure the security of your
+          application and its users.
+        </p>
+      </section>
+      <!-- Examples -->
+      <section class="main-section" id="Examples">
+        <header>
+          <h2>Examples</h2>
+        </header>
+        <section class="child-section">
+          <h3>HTTP Request Examples</h3>
+          <p>
+            To make an HTTP request, you can use various methods like
+            <code class="inline-code">GET</code>,
+            <code class="inline-code">POST</code>,
+            <code class="inline-code">PUT</code>, or
+            <code class="inline-code">DELETE</code>. Each method serves a
+            different purpose and has its own syntax. Here are some examples:
+          </p>
+          <section>
+            <h4>GET Request</h4>
+            <p>
+              To retrieve data from a server, use the GET method. It is commonly
+              used to fetch resources.
+            </p>
+            <pre>
+              GET /api/users HTTP/1.1
+              Host: example.com
+            </pre>
+          </section>
+          <section>
+            <h4>POST Request</h4>
+            <p>
+              To send data to a server, use the POST method. It is commonly used
+              for creating new resources or submitting form data.
+            </p>
+            <pre>
+                POST /api/users HTTP/1.1
+                Host: example.com
+                Content-Type: application/json
+
+                {
+                &nbsp;&nbsp;"name": "John Doe",
+                &nbsp;&nbsp;"email": "johndoe@example.com"
+                }
+            </pre>
+          </section>
+          <section>
+            <h4>PUT Request</h4>
+            <p>
+              To update an existing resource on the server, use the
+              <code class="inline-code">PUT</code> method.
+            </p>
+            <pre>
+              PUT /api/users/1 HTTP/1.1
+              Host: example.com
+              Content-Type: application/json
+
+              {
+              &nbsp;&nbsp;"name": "Updated Name",
+              &nbsp;&nbsp;"email": "updatedemail@example.com"
+              }
+            </pre>
+          </section>
+          <section>
+            <h4>DELETE Request</h4>
+            <p>
+              To delete a resource on the server, use the
+              <code class="inline-code">DELETE</code> method.
+            </p>
+            <pre>
+              DELETE /api/users/1 HTTP/1.1
+              Host: example.com
+            </pre>
+          </section>
+        </section>
+        <section class="child-section">
+          <h3>HTTP Response Examples</h3>
+          <p>
+            After making an HTTP request, you will receive a response from the
+            server. The response includes a status code, headers, and
+            optionally, a response body. Here are some examples:
+          </p>
+          <section>
+            <h4>Successful Response (200 OK)</h4>
+            <pre>
+              HTTP/1.1 200 OK
+              Content-Type: application/json
+
+              {
+              &nbsp;&nbsp;"id": 1,
+              &nbsp;&nbsp;"name": "John Doe",
+              &nbsp;&nbsp;"email": "johndoe@example.com"
+              }
+            </pre>
+          </section>
+          <section>
+            <h4>Error Response (404 Not Found)</h4>
+            <pre>
+              HTTP/1.1 404 Not Found
+              Content-Type: application/json
+
+              {
+              &nbsp;&nbsp;"error": "Resource not found."
+              }
+            </pre>
+          </section>
+        </section>
+        <p>
+          These examples illustrate the basic structure of HTTP requests and
+          responses. You can modify the headers, parameters, and body based on
+          your specific requirements.
+        </p>
+      </section>
+      <!-- Reference -->
+      <section class="main-section" id="Reference">
+        <header>
+          <h2>Reference</h2>
+        </header>
+        <p>All contents are generated by Notion AI and ChatGPT.</p>
+      </section>
+    </main>
+  </body>
+</html>

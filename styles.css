@@ -1,0 +1,142 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  background-color: #fdfdfd;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 400;
+}
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.7rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+h4 {
+  font-size: 1.3rem;
+}
+
+#navbar {
+  border-right: 1px solid #adadad;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 330px;
+  height: 100%;
+}
+
+#navbar header {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+#navbar ul {
+  padding: 0;
+  height: 80%;
+  overflow-y: scroll;
+  margin: 0;
+}
+
+#navbar li {
+  list-style: none;
+  width: 100%;
+  border-top: 1px solid #adadad;
+  position: relative;
+}
+
+#navbar a {
+  display: block;
+  color: #232323;
+  font-size: 1.2rem;
+  font-weight: 300;
+  text-decoration: none;
+  padding: 0.9rem 0 0.9rem 1rem;
+  cursor: pointer;
+}
+
+#main-doc {
+  margin-left: 350px;
+  padding: 2rem;
+  position: absolute;
+}
+
+.main-section li {
+  margin-bottom: 0.8rem;
+  font-weight: 200;
+}
+
+.main-section p,
+.main-section li {
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+pre {
+  background-color: #f2f2f2;
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: left;
+  word-break: normal;
+  word-wrap: normal;
+  white-space: pre-line;
+}
+
+.inline-code {
+  background-color: #eeeeee;
+  border-radius: 5px;
+  border: 1px solid #dddddd;
+  padding: 0 3px;
+  color: #aa2222;
+}
+
+@media only screen and (max-width: 815px) {
+  #navbar {
+    background-color: #fdfdfd;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    max-height: 300px;
+    margin: 0;
+    padding: 0;
+    z-index: 2;
+    border-bottom: 2px solid;
+  }
+
+  #navbar ul {
+    border: 1px solid;
+    height: 200px;
+  }
+  #main-doc {
+    position: relative;
+    margin-left: 0;
+    margin-top: 300px;
+    width: 100%;
+    z-index: 1;
+  }
+}
